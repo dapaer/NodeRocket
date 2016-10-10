@@ -1,0 +1,24 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">创建banner</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">序号：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="obj.sortNo">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">图片：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{obj.img}}">
+		</div>
+		<div class="col p-r-sm">
+			<allen-file-upload f-model='obj.img' f-img="true"></allen-file-upload>
+		</div>
+
+	</div>
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="ok()">提交</a>
+		</div>
+	</div>
+</div>

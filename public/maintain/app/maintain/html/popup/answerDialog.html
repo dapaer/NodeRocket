@@ -1,0 +1,11 @@
+<a allen-footable no-title="true" no-search="true" url="/service/answer-detail!queryByAnsParam"  no-data-tip="暂无问题记录" pagesize='6'
+			ft-top-title="回答列表" ft-result-array = "resultArr" ft-titile="图片:format;标题;价格:phone;回答者:phone;回答时间:phone;操作:format" ft-search="search"
+			ft-item="<img size='xs' ng-click='open(item)'  allen-src='item.PIC_URL'/>;TITLE;PRICE;USER.NICKNAME;CREATE_TIME.substr(0,19);<a class='badge bg-info m-r-sm' ng-click='changeAns(item)'><i class='fa fa-edit'></i></a><a class='badge bg-danger' ng-click='deleteQue(item.ID)'><i class='fa fa-minus'></i></a>">
+			<div class="hbox">
+				<div class="col col-md p-r-sm text-right v-middle">标题:</div>
+				<div class="col">
+					<allen-lazy-input ng-model="search.TITLE"></allen-lazy-input>
+				</div>
+			</div>
+			
+			</a>

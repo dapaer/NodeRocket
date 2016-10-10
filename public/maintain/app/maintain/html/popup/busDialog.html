@@ -1,0 +1,41 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">创建客户</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">序号：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="obj.sortNo">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">名称：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="obj.name">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">logo：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{obj.logo}}">
+		</div>
+		<div class="col p-r-sm">
+			<allen-file-upload f-model='obj.logo' f-img="true"></allen-file-upload>
+		</div>
+
+	</div>
+
+
+
+	<div class="hbox padder-v-md">
+		<div class="col col-md">类型：</div>
+		<div class="col p-r-sm">
+			<select ng-model="obj.busType" ng-options="m._id as  m.name for m in types">
+				<option value="">-- 请选择 --</option>
+			</select>
+		</div>
+	</div>
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="ok()">提交</a>
+		</div>
+	</div>
+</div>

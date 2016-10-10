@@ -1,0 +1,41 @@
+<style>
+	.w-20p{
+		width: 50px;
+	}
+</style>
+<a allen-footable no-search="true"
+	url="/server/bannerService!query" no-data-tip="暂无信息"
+	pagesize='5' ft-top-title="banner管理" ft-result-array="resultArr"
+	ft-titile="顺序;图片:format;操作:format"
+	ft-search="search"
+	sort-Obj="sortObj"
+	ft-item="sortNo;<span size='xs'  allen-src='item.img'></span>;<a class='badge bg-danger  m-r-sm' ng-click='delete(item._id)'><i class='fa fa-minus'></i></a>">
+	<!--<div class="hbox">
+		<div class="col col-md text-right v-middle p-r-xs">
+			标题:
+		</div>
+		<div class="col">
+			<allen-lazy-input ng-model="search.TITLE"></allen-lazy-input>
+		</div>
+	</div>
+	<div class="hbox m-t-xs">
+		<div class="col col-md v-middle text-right p-r-xs">
+			开始时间：
+		</div>
+		<div class="col v-middle p-r-sm">
+			<allen-datepicker dp-model='search.START_TIME'></allen-datepicker>
+		</div>
+		<div class="col col-md v-middle text-right p-r-xs">
+			结束时间：
+		</div>
+		<div class="col v-middle p-r-sm">
+			<allen-datepicker dp-model='search.END_TIME'></allen-datepicker>
+		</div>
+	</div>-->
+	<div class="hbox">
+		<div class="col">
+			<button class="btn btn-info" ng-click="create()">添加</button>
+		</div>
+	</div>
+</a>
+

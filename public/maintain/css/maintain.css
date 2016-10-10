@@ -1,0 +1,14 @@
+.isValidate{
+	display:inline-block;
+	padding:3px 15px;
+	background-color:#FFF;
+	border-radius:6px;
+}
+
+.isValidate.active{
+	background-color:#23b7e5;
+	color:#FFF;
+}
+.hoverBig:hover{
+	font-size:20px;
+}

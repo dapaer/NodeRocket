@@ -1,0 +1,47 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">新增答案</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">商品链接直接回答：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="ans.URL">
+		</div>
+		<div class="col col-md">
+			<button class='btn btn-info' ng-click="answerLink()">确定</button>
+		</div>
+	</div>
+	
+	<div class="hbox padder-v-md">
+		<div class="col col-md">标题：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="ans.TITLE">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">图片：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{ans.PIC_URL}}">
+		</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control " ng-model="ans.PIC_URL">
+		</div>
+		
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">价格：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="ans.PRICE">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">链接：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="ans.URL">
+		</div>
+	</div>
+	
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="answerForm()">提交</a>
+		</div>
+	</div>
+</div>

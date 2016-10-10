@@ -1,0 +1,30 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">绑定详情</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">用户名：</div>
+		<div class="col p-r-sm">
+			<span   ng-bind="user.NICKNAME"></span>
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">图片：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{user.HEADIMGURL}}">
+		</div>
+		<div class="col p-r-sm">
+		</div>
+		
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">性别：</div>
+		<div class="col p-r-sm">
+			<span ng-bind="user.SEX=='MALE'? '男':'女'"></span>
+		</div>
+	</div>
+	
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="ok()">确定</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<a allen-footable no-search="true" url="/server/workService!queryAndType"  no-data-tip="暂无问题记录" pagesize='5'
+			ft-top-title="作品管理" ft-result-array = "resultArr" ft-titile="序号;名称;logo:format;上传人;时间;类型;操作:format" ft-search="search"
+			ft-item="sortNo;title;<span size='xs'  allen-src='item.logo'></span>;person;loadTime.parseToDate().parseStr('YYYY-MM-DD');workType;<a class='badge bg-danger  m-r-sm' ng-click='delete(item._id)'><i class='fa fa-minus'></i></a>">
+			<div class="hbox m-t-xs">
+				<div class="col">
+					<button class="btn btn-info"  ng-click="create()">新建作品</button>
+				</div>
+			</div>
+			
+</a>

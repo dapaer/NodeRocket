@@ -1,0 +1,16 @@
+<div ng-init="zxv = [{'name':1,'email':1},{'name':1,'email':1},{'name':1,'email':1}]" class="input-group">
+  <ui-select ng-model="person.selected" theme="bootstrap">
+    <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="item in zxv | filter: $select.search">
+      <span ng-bind="item"></span>
+      <small ng-bind="item"></small>
+    </ui-select-choices>
+  </ui-select>
+
+  <span class="input-group-btn">
+    <button ng-click="person.selected = undefined" class="btn btn-default">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </span>
+
+</div>

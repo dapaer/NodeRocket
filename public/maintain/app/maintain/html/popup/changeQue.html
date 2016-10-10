@@ -1,0 +1,39 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">修改问题</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">标题：</div>
+		<div class="col p-r-sm">
+			<input type="text" disabled class="form-control" ng-model="que.TITLE">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">图片：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{que.PIC_URL}}">
+		</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control " ng-model="que.PIC_URL">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">详细：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="que.REQ_DETAIL">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">喜欢个数：</div>
+		<div class="col p-r-sm">
+			<input type="tel" class="form-control" ng-model="que.LIKE_COUNT">
+		</div>
+	</div>
+	
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="ok()">提交</a>
+		</div>
+		<div class="col p-l-sm">
+			<a class="btn btn-warning" ng-click="reset()">重置</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<style>
+	.w-20p{
+		width: 50px;
+	}
+</style>
+<div>
+<a allen-footable no-search="true"
+	url="/service/ourside-login!queryByUserInfoParam" no-data-tip="暂无信息"
+	pagesize='5' ft-top-title="用户管理" ft-result-array="resultArr"
+	ft-titile="头像:format;姓名;手机:format;统计:format"
+	ft-search="search"
+	ft-item="<span size='xs'  allen-src='item.HEADIMGURL'></span>;NICKNAME;<span ng-bind='item.USER_INFO.PHONE'></span>;<a class='badge inline w-20p bg-success m-r-xs'>问:<span ng-bind='item.ASK_NUM.ASKNUM || 0'></span></a><a class='badge bg-info inline w-20p'>答:<span ng-bind='item.ANS_NUM.ANSNUM || 0'></span></a>;">
+	<div class="hbox">
+		<div class="col col-md text-right v-middle p-r-xs">
+			姓名:
+		</div>
+		<div class="col">
+			<allen-lazy-input ng-model="search.NICKNAME"></allen-lazy-input>
+		</div>
+	</div>
+	<div class="hbox m-t-xs">
+		<div class="col col-md text-right v-middle" >
+			时间:
+		</div>
+		<div class="col">
+			<allen-datepicker dp-model='dailyGift.CREATE_TIME'></allen-datepicker>
+		</div>
+		<div class="col">
+			<button class="btn btn-info"  ng-click='save(selectedArr)'>确定选中</button>
+		</div>
+	</div>
+	
+</a>
+</div>

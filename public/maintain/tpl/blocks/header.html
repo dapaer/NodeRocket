@@ -1,0 +1,66 @@
+      <!-- navbar header -->
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}">
+        <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a href="#/" class="navbar-brand text-lt">
+          <!--<i class="fa fa-btc"></i>-->
+          <img src="img/logo.png" alt="." class="hide">
+          <span class="hidden-folded m-l-xs">{{app.name}}</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+          </a>
+          <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            <i class="icon-user fa-fw"></i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+
+        <!-- / search form -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden-xs">
+            <a ui-fullscreen></a>
+          </li>
+          <li class="dropdown">
+            <a href class="dropdown-toggle clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/a0.jpg" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li>
+                <a href>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ng-click="loginOut()">Logout</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+
+      </div>
+      <!-- / navbar collapse -->
