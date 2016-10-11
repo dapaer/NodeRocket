@@ -1,0 +1,37 @@
+<div allen-footable no-search="true" url="/service/daily-gift!queryByParam"  no-data-tip="暂无奖励" pagesize='5'
+			ft-top-title="奖励管理" ft-result-array = "resultArr"
+			ft-titile="昵称;手机号;时间:phone;操作:format" ft-search="search"
+			ft-item="NICKNAME;PHONE;CREATE_TIME.substr(0,19);<a class='badge bg-danger  m-r-sm' ng-click='deleteQue(item.ID)'><i class='fa fa-minus'></i></a>">
+			<div class="hbox m-t-xs">
+				<div class="col col-md v-middle text-right p-r-xs">
+					昵称：
+				</div>
+				<div class="col v-middle p-r-sm">
+					<allen-lazy-input ng-model="search.NICK_NAME"></allen-lazy-input>
+				</div>
+				<div class="col col-md v-middle text-right p-r-xs">
+					手机号：
+				</div>
+				<div class="col v-middle p-r-sm">
+					<allen-lazy-input ng-model="search.PHONE"></allen-lazy-input>
+				</div>
+			</div>
+			
+			<div class="hbox m-t-xs">
+				<div class="col col-md v-middle text-right p-r-xs">
+					开始时间：
+				</div>
+				<div class="col v-middle p-r-sm">
+					<allen-datepicker dp-model='search.START_DATE'></allen-datepicker>
+				</div>
+				<div class="col col-md v-middle text-right p-r-xs">
+					结束时间：
+				</div>
+				<div class="col v-middle p-r-sm">
+					<allen-datepicker dp-model='search.END_DATE'></allen-datepicker>
+				</div>
+			</div>
+			<div class="hbox m-t-xs">
+				<a class="btn btn-primary" ng-click="open()">添加</a>
+			</div>
+</div>		

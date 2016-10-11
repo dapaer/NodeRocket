@@ -1,5 +1,5 @@
 var busTypes = require('../models/busTypes').busTypes;
-busTypeService = {
+var  busTypeService = {
 	//这里是保存实体
 	saveEntity:function(req,res,param){
 		var result1 = busTypes.saveEntity({
@@ -21,7 +21,7 @@ busTypeService = {
 		console.log(ids)
 		return busTypes.findByCondition({_id:{$in:ids}});
 	},
-	/** 
+	/**
 	 * 查询有效的 
      */
 	queryUndisable:function(req,res){

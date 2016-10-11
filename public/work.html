@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="css/fruitful.css">
+    <script type="text/javascript" src="./js/jquery.js" ></script>
+    <script src="//cdn.bootcss.com/angular.js/1.3.16/angular.js"></script>
+    <script type="text/javascript" src="./js/swiper.min.js" ></script>
+    <script type="text/javascript" src="./js/fruitful.js" ></script>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <title>橙意智造</title>
+</head>
+<body class="no-margin"  ng-controller="index">
+<div class="bc-black w-full top-title">
+    <div class="xbox">
+        <div class="col"></div>
+        <div class="col top-img-width">
+            <img src="img/logo.png" class="top-img-lg">
+            <img src="img/top-img-xs.png" class="top-img-xs">
+        </div>
+        <div class="col">
+            <div class="xbox top-left-lg">
+                <div class="col">
+                    <div class="title-contract">
+                        <a class="btn-work m-r-35x" href="index.html">HOME</a>
+                        <div class="text-white text-16x p-t-9x">服務咨詢:0757-86222070</div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-left-xs">
+                <img src="img/top-right.png" style="width: 18px;height: 15px" onclick="openMenu()">
+            </div>
+        </div>
+    </div>
+    <div class="bc-orangr h-15x hidden-xs"></div>
+    <div class="work-title-img hidden-xs">
+        <div class="work-text">
+            WORKS
+        </div>
+    </div>
+    <div class="work-title-img hidden-lg">
+        <div class="work-text">
+            WORKS
+        </div>
+    </div>
+    <div class="zp-list">
+        <!--<div class="w-90x contract hidden-xs">
+            <div class="text-center">
+                <div class="m-b-10x w-90x" onclick="contractClick(0)">
+                    <img src="img/call.png" class="w-90x hander">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/wechat.png" class="hander wechat" onclick="contractClick(1)">
+                    <img src="img/wechat_on.png" class="hander wechat_on" onclick="contractClick(1)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/weibo.png" class="hander weibo" onclick="contractClick(2)">
+                    <img src="img/weibo_on.png" class="hander weibo_on" onclick="contractClick(2)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/qq.png" class="hander qq" onclick="contractClick(3)">
+                    <img src="img/qq_on.png" class="hander qq_on" onclick="contractClick(3)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/email.png" class="hander email" onclick="contractClick(4)">
+                    <img src="img/email_on.png" class="hander email_on" onclick="contractClick(4)">
+                </div>
+            </div>
+        </div>-->
+        <div class="qrCode hidden-xs">
+            <img src="img/qrcode.png" class="w-full">
+        </div>
+        <div class="bg2-up hidden-xs">
+            <img src="img/bg2-top.png" class="w-full" ng-click="toTop()">
+        </div>
+        <div class="bg2-down hidden-xs">
+            <img src="img/bg2-top.png" class="w-full" ng-click="toBottom()">
+        </div>
+        <div class="click-frame">
+            <div class="call_frame">
+                <img src="img/call_frame.png">
+            </div>
+            <div class="wechat_frame">
+                <img src="img/wechat_frame.png">
+            </div>
+            <div class="weibo_frame">
+                <img src="img/weibo_frame.png">
+            </div>
+            <div class="qq_frame">
+                <img src="img/qq_frame.png">
+            </div>
+            <div class="email_frame">
+                <img src="img/email_frame.png">
+            </div>
+        </div>
+        <div class="filter text-23x clearfix">
+            <div class=" hander p-l-35x" style="align-self: center" ng-click="changeWorkType('ALL')" ng-class="{'cy-orange':'ALL'==workTypeItem}">
+                ALL
+            </div>
+            <div class=" hander p-l-35x" ng-repeat="item in workTypeList" style="line-height: 30px" ng-click="changeWorkType(item._id)" ng-class="{'cy-orange':item._id==workTypeItem}">
+                    <div class="work-type-img"><img src=".{{item.logo}}" class="w-full h-full"></div>
+                    <span ng-bind="item.name"></span>
+            </div>
+        </div>
+        <div class="zp-list-content">
+            <div class="zp-content pos-rlt" ng-click="openModel($index)" ng-repeat="item in workListInfo" ng-if="$index<(pageItemIndex+1)*18 && $index>=pageItemIndex*18">
+                <div class="bc-orangr zp-img pos-rlt" style="overflow: hidden">
+                    <img src=".{{item.work.logo}}" class="w-full h-full imgscale">
+                </div>
+                <div class="zp-content-bottom-img pos-rlt">
+                    <img src="img/workBottom.png" class="w-full">
+                    <div ng-bind="item.work.title" class="workListTitleXs"></div>
+                </div>
+                <div class="xbox zp-tips">
+                    <div class="col">
+                        {{item.work.loadTime}}
+                    </div>
+                    <div class="col text-right">
+                        <img src=".{{item.workType.logo}}" class="zp-tip-img">
+                    </div>
+                </div>
+                <div class="hoverModalWork"></div>
+                <div class="hoverModalTextWork">
+                    <div class="workModalTitle text-ellipsis text-center" ng-bind="item.work.title"></div>
+                    <div class="workModalType m-t-10x text-center">-- {{item.workType.name}} --</div>
+                    <div class="text-center"> {{item.work.loadTime}} </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" >
+
+            <div class="page-item" ng-class="{'bg-orange':pageItemIndex == item-1,'bg-black':pageItemIndex!= item-1}" ng-click="changePage2($index)" ng-repeat="item in pageList">{{item}}</div>
+        </div>
+        <div class="zp-cut-img"></div>
+        <div class="btn-logo hidden-xs">
+            <div class="text-center logo">
+                <img src="img/bottom-logo.png">
+            </div>
+            <div class="footer-name" style="color: #a6a6a6">
+                橙意智造公關策劃
+            </div>
+            <div class="">
+                <div class="xbox text-white m-0-a" style="width:780px">
+                    <div class="col">
+                        <div style="color: #797979">橙意智造--HongKong</div>
+                        <div style="color: #a6a6a6">香港九龍旺角33號凱途發展大廈7樓04單元</div>
+                    </div>
+                    <div class="col">
+                        <div style="color: #797979">橙意智造--FoShan</div>
+                        <div style="color: #a6a6a6">廣東省金融高新區（佛山南海）保利西街2棟01-02單元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-logo-xs hidden-lg">
+            <div class="text-center p-b-15x">
+                <img src="img/bottom-logo.png" style="width: 65px;height: 70px">
+            </div>
+            <div class="footer-name-xs text-12x" style="color: #a6a6a6">
+                橙意智造公關策劃
+            </div>
+            <div class="text-12x p-b-15x">
+                <div style="color: #797979">橙意智造--HongKong</div>
+                <div style="color: #a6a6a6">香港九龍旺角33號凱途發展大廈7樓04單元</div>
+            </div>
+            <div class="text-12x p-t-9x">
+                <div style="color: #797979">橙意智造--FoShan</div>
+                <div style="color: #a6a6a6">廣東省金融高新區（佛山南海）保利西街2棟01-02單元</div>
+            </div>
+        </div>
+        <div class="end hidden-xs">
+            CopyRight©香港橙意公關顧問有限公司All Rights Reserved 粵ICP备16000871号
+        </div>
+        <div class="end-xs hidden-lg">
+            <img src="img/end-xs.png" class="w-full">
+        </div>
+    </div>
+
+    <!-- 作品遮罩 -->
+    <div class="bodyBG" ng-if="showModal" style="display: block!important;"></div>
+    <div class="workModal" ng-if="showModal" style="display: block!important;">
+        <div class="mdclose">
+            <div>
+                <img src="img/close.png"  ng-click="closeModel()" class="hander mdclose-img">
+            </div>
+        </div>
+        <div class="work-list" id="cyworkcontent">
+            <div class="workModel-title ymx">
+                <div class="caption-fist">
+                    {{workContent.title}}
+                </div>
+                <div class="clearfix p-t-9x text-12x" style="color: #8b8b8b">
+                    <div class="f-l">
+                        {{workContent.loadTime}}
+                    </div>
+                    <div class="f-r"></div>
+                </div>
+                <div class="p-t-20x">
+                    <div class="w-full" ng-bind-html="workContent.content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="work-btn">
+            <div class="work-btn-left" ng-click="changePage(itemIndex-1)" ng-class="{'bg-ban':itemIndex-1<0,'bg-open':itemIndex>0}">< </div>
+            <div class="work-btn-cener">
+                <img src="img/work-btn-list.png" class="w-full hander" ng-click="closeModel()">
+            </div>
+            <div class="work-btn-right" ng-click="changePage(itemIndex+1)" ng-class="{'bg-ban':itemIndex==workList.length-1}">> </div>
+        </div>
+    </div>
+    <!-- 作品遮罩 -->
+
+    <!-- 手机菜单 -->
+    <div class="menu-xs">
+        <div class="xbox">
+            <a class="col b-r-w" href="index.html">
+                <div class=" text-center">
+                    <img src="img/work_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    HOME
+                </div>
+            </a>
+            <div class="col b-r-w">
+                <div class=" text-center">
+                    <img src="img/phone_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    電話咨詢
+                </div>
+            </div>
+            <div class="col b-r-w">
+                <div class=" text-center">
+                    <img src="img/wechat_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    微信
+                </div>
+            </div>
+            <div class="col b-r-w">
+                <div class=" text-center">
+                    <img src="img/weibo_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    微博
+                </div>
+            </div>
+            <div class="col b-r-w">
+                <div class=" text-center">
+                    <img src="img/QQ _menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    QQ
+                </div>
+            </div>
+            <div class="col b-r-w">
+                <div class=" text-center">
+                    <img src="img/email_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    郵箱
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="css/fruitful.css">
+    <script type="text/javascript" src="./js/jquery.js" ></script>
+    <script src="//cdn.bootcss.com/angular.js/1.3.16/angular.js"></script>
+    <script type="text/javascript" src="./js/swiper.min.js" ></script>
+    <script type="text/javascript" src="./js/fruitful.js" ></script>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <title>橙意智造</title>
+</head>
+<body class="no-margin" ng-controller="index">
+    <!-- 頭部 -->
+    <div class="bc-black w-full top-title">
+        <div class="xbox">
+            <div class="col"></div>
+            <div class="col top-img-width">
+                <img src="img/logo.png" class="top-img-lg">
+                <img src="img/top-img-xs.png" class="top-img-xs">
+            </div>
+            <div class="col">
+                <div class="xbox top-left-lg">
+                    <div class="col">
+                        <div class="title-contract">
+                            <a class="btn-work m-r-35x" href="work.html">WORK</a>
+                            <div class="text-white text-16x p-t-9x">服務咨詢:0757-86222070</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-left-xs">
+                    <img src="img/top-right.png" style="width: 18px;height: 15px" onclick="openMenu()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bc-orangr h-15x hidden-xs"></div>
+    <div class="bg2-top w-full bc-white">
+        <!-- 固定聯繫方式 -->
+        <div class="w-90x contract hidden-xs">
+            <div class="text-center">
+                <div class="m-b-10x w-90x" onclick="contractClick(0)">
+                    <img src="img/call.png" class="w-90x hander">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/wechat.png" class="hander wechat" onclick="contractClick(1)">
+                    <img src="img/wechat_on.png" class="hander wechat_on" onclick="contractClick(1)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/weibo.png" class="hander weibo" onclick="contractClick(2)">
+                    <img src="img/weibo_on.png" class="hander weibo_on" onclick="contractClick(2)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/qq.png" class="hander qq" onclick="contractClick(3)">
+                    <img src="img/qq_on.png" class="hander qq_on" onclick="contractClick(3)">
+                </div>
+                <div class="m-b-10x w-90x">
+                    <img src="img/email.png" class="hander email" onclick="contractClick(4)">
+                    <img src="img/email_on.png" class="hander email_on" onclick="contractClick(4)">
+                </div>
+            </div>
+        </div>
+        <div class="qrCode hidden-xs">
+            <img src="img/qrcode.png" class="w-full">
+        </div>
+        <div class="bg2-up hidden-xs" ng-click="toTop()">
+            <img src="img/bg2-top.png" class="w-full">
+        </div>
+        <div class="bg2-down hidden-xs" ng-click="toBottom()">
+            <img src="img/bg2-top.png" class="w-full">
+        </div>
+        <div class="click-frame">
+            <div class="call_frame">
+                <img src="img/call_frame.png">
+            </div>
+            <div class="wechat_frame">
+                <img src="img/wechat_frame.png">
+            </div>
+            <div class="weibo_frame">
+                <img src="img/weibo_frame.png">
+            </div>
+            <div class="qq_frame">
+                <img src="img/qq_frame.png">
+            </div>
+            <div class="email_frame">
+                <img src="img/email_frame.png">
+            </div>
+        </div>
+        <div class="swiper-container hidden-xs" ng-if="imgList">
+            <div class="swiper-wrapper" ng-init="init()">
+                <div class="swiper-slide" ng-repeat="item in imgList">
+                    <img src="{{item.img}}" class="w-full">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-container hidden-lg" ng-if="imgList">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in imgList">
+                    <img src=".{{item.img}}" class="w-full" style="min-height: 400px">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="bg2-tu hidden-xs">
+            <img src="img/tu1.png" class="w-full">
+        </div>
+        <div class="bg2-tu-xs hidden-lg">
+            <img src="img/tu1-xs.png" class="">
+        </div>
+    </div>
+    <div class="h-600x bc-black w-full hidden-xs" style="position: relative;top: -10px;" id="cyln">
+        <div class="text-center text-orange text-25x w-full text-fold p-t-15x trigger effect-slideup lazy-load-box">
+            THE SERVICE CONCEPT OF PRUSUE
+        </div>
+        <div class="prusue-title text-center trigger effect-slideup lazy-load-box">
+            「誠」意智造
+        </div>
+        <div class="text-center text-orange text-35x l-h-1x trigger effect-slideup lazy-load-box">—</div>
+        <div class="text-center text-23x l-h-1x text-orange p-l-42x trigger effect-slideup lazy-load-box">是橙意長期奉行的服務理念</div>
+        <div class="text-center p-t-9x trigger effect-slideup lazy-load-box">
+            <img src="img/prusue.png" class="h-378x">
+        </div>
+    </div>
+    <div class="bc-black w-full hidden-lg bg3-xs">
+        <div class="bg2-top-xs hidden-lg">
+            <img src="img/toBottom.png" style="height: 40px;width: 30px">
+        </div>
+        <div class="text-center text-orange w-full text-fold p-t-15x">
+            THE SERVICE CONCEPT OF PRUSUE
+        </div>
+        <div class="prusue-title text-center">
+            「誠」意智造
+        </div>
+        <div class="text-center text-orange l-h-1x">—</div>
+        <div class="text-center l-h-1x text-orange">是橙意長期奉行的服務理念</div>
+        <div>
+            <img src="img/bg3-center-xs.png" class="w-full">
+        </div>
+    </div>
+    <div class="pmo hidden-xs" id="hzal">
+        <div class="pmo-tu" style="position: absolute">
+            <img src="img/tu1.png">
+        </div>
+        <div class="pmo-toTop">
+            <img src="img/toTop.png">
+        </div>
+        <div class="pmo-toBottom">
+            <img src="img/toBottom.png">
+        </div>
+        <div class="pmo-content">
+            <div class="text-center text-55x text-fold l-h-1x trigger effect-slideup lazy-load-box" style="letter-spacing: 4px;padding-top: 160px;">橙意智造的合作案例</div>
+            <div class="text-center text-35x l-h-1x trigger effect-slideup lazy-load-box">—</div>
+            <div class="text-center text-23x l-h-1x trigger effect-slideup lazy-load-box">我們的作品</div>
+            <div class="zp clearfix trigger effect-slideup lazy-load-box">
+                <div class="zp-item pos-rlt" ng-click="openModel($index)" ng-repeat="item in workListInfo" ng-if="$index<12 || isMore">
+                    <div class="bc-white zp-item-top">
+                        <img src=".{{item.work.logo}}" class="w-full h-full imgscale">
+                    </div>
+                    <div class="pos-rlt">
+                        <img src="img/workBottom.png" class="w-full" style="height: 42px">
+                        <div class="workBottomText" ng-bind="item.work.title"></div>
+                    </div>
+                    <div class="hoverModal"></div>
+                    <div class="hoverModalText">
+                        <div class="text-28x text-ellipsis text-center" style="margin-top: 29px" ng-bind="item.work.title"></div>
+                        <div class="text-19x m-t-10x text-center">-- {{item.workType.name}} --</div>
+                        <div class="text-center"> {{item.work.loadTime}} </div>
+                    </div>
+                </div>
+                <div class="zp-btn hander" onclick="clickMore()" ng-if="workList.length>12" ng-click="openMore()">
+                    MORE
+                </div>
+            </div>
+        </div>
+        <div class="pmo-tu1">
+            <img src="img/tu1.png">
+        </div>
+    </div>
+    <div class="pmo-xs hidden-lg">
+        <div class="bg3-bottom-xs hidden-lg">
+            <img src="img/toTop.png" style="height: 40px;width: 30px">
+        </div>
+        <div class="bg3-bottom">
+            <img src="img/tu1-xs.png" class="">
+        </div>
+        <div class="text-center text-28x text-fold l-h-1x">橙意智造的合作案例</div>
+        <div class="text-center l-h-1x">—</div>
+        <div class="text-center l-h-1x p-b-15x">我們的作品</div>
+        <div class="pmo-list-xs">
+            <div></div>
+            <div class="pmo-list-content clearfix">
+                <div class="pmo-item pos-rlt" ng-click="openModel($index)" ng-repeat="item in workListInfo" ng-if="$index<12 || isMore">
+                    <div class="pmo-item-img pos-rlt" style="overflow: hidden">
+                        <img src=".{{item.work.logo}}" class="w-full h-full imgscale">
+                    </div>
+                    <div class="pmo-item-bottom">
+                        <div class="workBottomTextXs" ng-bind="item.work.title"></div>
+                    </div>
+                    <div class="hoverModalXs"></div>
+                    <div class="hoverModalTextXs">
+                        <div class="text-19x text-ellipsis"  ng-bind="item.work.title" style="margin-top: 11px;"></div>
+                        <div class=" m-t-10x text-center">-- {{item.workType.name}} --</div>
+                        <div class="text-center text-12x"> {{item.work.loadTime}} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bc-orangr clearfix p-t-9x p-r-5x p-b-15x hidden-lg" style="margin-bottom: -1px;position: relative;height: 150px;">
+        <div class="zp-btn-xs" ng-if="workList.length>12" ng-click="openMore()" >
+            MORE
+        </div>
+        <div class="bg4-bottom">
+            <img src="img/tu1-xs.png" class="">
+        </div>
+        <div class="bg4-top-xs hidden-lg">
+            <img src="img/toBottom.png" style="height: 40px;width: 30px">
+        </div>
+    </div>
+    <div class="operation hidden-xs " id="cyyy">
+        <div class="trigger effect-slideup lazy-load-box">
+            <div class="text-center text-55x text-fold l-h-1x text-orange" style="letter-spacing: 4px;padding-top: 30px;">橙意智造從營銷到營運</div>
+            <div class="text-center text-35x l-h-1x text-orange">—</div>
+            <div class="text-center text-23x l-h-1x text-orange">我們的服務範圍</div>
+            <div class="text-white text-16x text-fold text-center p-t-15x">一個<span class="text-23x p-l-5x p-r-5x">品牌整合</span>思維核心----五個可獨立運營板塊</div>
+            <div class="clearfix operation-content">
+                <div class="w-180x f-l p-t-64x">
+                    <div class="text-25x text-orange text-fold text-center">網絡公關</div>
+                    <div class="text-center">
+                        <img src="img/icon1.png" class="b-b-orange">
+                    </div>
+                    <div class="text-16x text-orange text-center p-t-15x">
+                        <div class="p-t-15x">品牌維護</div>
+                        <div class="p-t-15x">口碑維護</div>
+                        <div class="p-t-15x">企業長期性公關策略咨詢</div>
+                        <div class="p-t-15x">階段性公關策略規劃</div>
+                        <div class="p-t-15x">政府關係咨詢與維護</div>
+                        <div class="p-t-15x">媒體關係管理與維護</div>
+                    </div>
+                </div>
+                <div class="w-180x f-l p-t-64x">
+                    <div class="text-25x text-orange text-fold text-center">事件營銷</div>
+                    <div class="text-center">
+                        <img src="img/icon2.png" class="b-b-orange">
+                    </div>
+                    <div class="text-16x text-orange text-center p-t-15x">
+                        <div class="p-t-15x">造勢事件</div>
+                        <div class="p-t-15x">借勢事件</div>
+                        <div class="p-t-15x">新聞事件</div>
+                        <div class="p-t-15x">活動事件</div>
+                    </div>
+                </div>
+                <div class="w-180x f-l p-t-64x" style="position: relative">
+                    <div class="text-25x text-orange text-fold text-center">內容營銷</div>
+                    <div class="text-center">
+                        <img src="img/icon3.png" class="b-b-orange">
+                    </div>
+                    <div class="text-16x text-orange text-center p-t-15x content-text">
+                        <div class="p-t-15x">品牌內容營銷策略咨詢</div>
+                        <div class="p-t-15x">品牌贊助</div>
+                        <div class="p-t-15x">影視植入</div>
+                        <div class="p-t-15x">品牌原創內容製作</div>
+                        <div class="p-t-15x">（H5\病毒視頻\海報\插圖\軟文等）</div>
+                        <div class="p-t-15x">品牌跨界</div>
+                    </div>
+                </div>
+                <div class="w-180x f-l p-t-64x">
+                    <div class="text-25x text-orange text-fold text-center">社交媒體營銷</div>
+                    <div class="text-center">
+                        <img src="img/icon4.png" class="b-b-orange">
+                    </div>
+                    <div class="text-16x text-orange text-center p-t-15x">
+                        <div class="p-t-15x">社交媒體營銷計劃</div>
+                        <div class="p-t-15x">社交媒體運營</div>
+                        <div class="p-t-15x">社交網絡意見領袖合作</div>
+                    </div>
+                </div>
+                <div class="w-180x f-l p-t-64x">
+                    <div class="text-25x text-orange text-fold text-center">廣告投放</div>
+                    <div class="text-center">
+                        <img src="img/icon5.png" class="b-b-orange">
+                    </div>
+                    <div class="text-16x text-orange text-center p-t-15x">
+                        <div class="p-t-15x">媒介策劃</div>
+                        <div class="p-t-15x">廣告創意</div>
+                        <div class="p-t-15x">媒體投放</div>
+                        <div class="p-t-15x">媒體監測</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="operation-xs hidden-lg">
+        <div class="text-center text-28x text-fold l-h-1x text-orange" style="padding-top: 20px;">橙意智造從營銷到營運</div>
+        <div class="text-center l-h-1x text-orange">—</div>
+        <div class="text-center text-16x l-h-1x text-orange">我們的服務範圍</div>
+        <div class="text-white text-fold text-center p-t-9x text-12x">一個<span class="text-16x p-l-5x p-r-5x">品牌整合</span>思維核心----五個可獨立運營板塊</div>
+        <div class="w-full p-t-30x">
+            <div class="text-19x text-orange text-fold text-center">網絡公關</div>
+            <div class="text-center">
+                <img src="img/icon1.png" class="b-b-orange operation-icon">
+            </div>
+            <div class="text-13x text-orange text-center p-t-5x">
+                <div class="p-t-15x">品牌維護</div>
+                <div class="p-t-15x">口碑維護</div>
+                <div class="p-t-15x">企業長期性公關策略咨詢</div>
+                <div class="p-t-15x">階段性公關策略規劃</div>
+                <div class="p-t-15x">政府關係咨詢與維護</div>
+                <div class="p-t-15x">媒體關係管理與維護</div>
+            </div>
+        </div>
+        <div class="w-full p-t-45x">
+            <div class="text-19x text-orange text-fold text-center">事件營銷</div>
+            <div class="text-center">
+                <img src="img/icon2.png" class="b-b-orange operation-icon">
+            </div>
+            <div class="text-13x text-orange text-center p-t-5x">
+                <div class="p-t-15x">造勢事件</div>
+                <div class="p-t-15x">借勢事件</div>
+                <div class="p-t-15x">新聞事件</div>
+                <div class="p-t-15x">活動事件</div>
+            </div>
+        </div>
+        <div class="w-full p-t-45x">
+            <div class="text-19x text-orange text-fold text-center">內容營銷</div>
+            <div class="text-center">
+                <img src="img/icon3.png" class="b-b-orange operation-icon">
+            </div>
+            <div class="text-13x text-orange text-center p-t-5x">
+                <div class="p-t-15x">品牌內容營銷策略咨詢</div>
+                <div class="p-t-15x">品牌贊助</div>
+                <div class="p-t-15x">影視植入</div>
+                <div class="p-t-15x">品牌原創內容製作</div>
+                <div class="p-t-15x">（H5\病毒視頻\海報\插圖\軟文等）</div>
+                <div class="p-t-15x">品牌跨界</div>
+            </div>
+        </div>
+        <div class="w-full p-t-45x">
+            <div class="text-19x text-orange text-fold text-center">社交媒體營銷</div>
+            <div class="text-center">
+                <img src="img/icon4.png" class="b-b-orange operation-icon">
+            </div>
+            <div class="text-13x text-orange text-center p-t-5x">
+                <div class="p-t-15x">社交媒體營銷計劃</div>
+                <div class="p-t-15x">社交媒體運營</div>
+                <div class="p-t-15x">社交網絡意見領袖合作</div>
+            </div>
+        </div>
+        <div class="w-full p-t-45x" style="padding-bottom: 100px">
+            <div class="text-19x text-orange text-fold text-center">廣告投放</div>
+            <div class="text-center">
+                <img src="img/icon5.png" class="b-b-orange operation-icon">
+            </div>
+            <div class="text-13x text-orange text-center p-t-5x">
+                <div class="p-t-15x">媒介策劃</div>
+                <div class="p-t-15x">廣告創意</div>
+                <div class="p-t-15x">媒體投放</div>
+                <div class="p-t-15x">媒體監測</div>
+            </div>
+        </div>
+        <div class="al-img-xs">
+            <img src="img/al-img.png" class="">
+        </div>
+    </div>
+    <div class="al hidden-xs" id="cyal">
+            <div class="al-toTop">
+                <img src="img/toTop-yellow.png">
+            </div>
+            <div class="al-toBottom">
+                <img src="img/toBottom.png">
+            </div>
+            <div class="trigger effect-slideup lazy-load-box">
+                <div class="text-center text-55x text-fold l-h-1x" style="letter-spacing: 4px;padding-top: 150px;">橙意智造是怎麼做的</div>
+                <div class="text-center text-35x l-h-1x">—</div>
+                <div class="text-center text-23x l-h-1x">我們，夠專業！</div>
+                <div class="text-center p-t-40x">
+                    <img src="./img/bg51.png" class="" style="width: 758px">
+                </div>
+            </div>
+    </div>
+    <div class="al-xs hidden-lg">
+        <div class="">
+            <div class="text-center text-28x text-fold l-h-1x">橙意智造是怎麼做的</div>
+            <div class="text-center l-h-1x">—</div>
+            <div class="text-center l-h-1x">我們，夠專業！</div>
+            <div class="text-center">
+                <img src="img/bg51.png" class="w-full" style="max-width: 470px">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="ys hidden-xs" id="ys">
+        <div class="trigger effect-slideup lazy-load-box">
+            <div class="text-center text-55x text-fold l-h-1x text-orange" style="letter-spacing: 4px;padding-top: 60px;">橙意智造的優勢和服務重點</div>
+            <div class="text-center text-35x l-h-1x text-orange">—</div>
+            <div class="text-center text-23x l-h-1x text-orange" style="padding-bottom: 40px">專注於訂製全局性的品牌社會化營銷</div>
+            <div class="ys-title">
+                <span>完成從品牌建設到提升銷售的社會化營銷閉環</span>
+            </div>
+            <div class="l-h-1x text-16x text-orange text-center">形成良性數據循環</div>
+            <div class="text-center p-t-40x">
+                <img src="img/ys.png" style="width: 1000px;padding-bottom: 85px">
+            </div>
+            <div class="ys-item">
+                會傾聽
+            </div>
+            <div class="ys-item-text text-center">善於利用優質的社會化媒體監控工具對所監測的話題的Social Content（社會化內容）進行收集、分類和管理。</div>
+            <div class="ys-item">
+                重內容
+            </div>
+            <div class="ys-item-text" style="padding-left: 25px">
+                指定內容營銷戰略：網頁、圖片、視頻，音頻和TV Show、社區網絡、Rich Media等文本內容通過社會化渠。
+                <div style="padding-top: 10px">道進行推廣</div>
+            </div>
+            <div class="ys-item">
+                善社交
+            </div>
+            <div class="ys-item-text" style="padding-left: 25px">
+                通過協調客戶需求和內容營銷戰略中的業務目標來形成互動循環。通過意見領袖、UGC、粉絲群體...指定品
+                <div style="padding-top: 10px">牌及事件的爆光戰略，給品牌及產品帶來搜索、流量和聯動成熟的社區分析導流，從而完成指定的目標。</div>
+            </div>
+            <div class="ys-item">
+                可測量
+            </div>
+            <div class="ys-item-text" style="padding-left: 25px">
+                Social Media Monitoring（社會化媒體監測）和Web Analytics（網絡分析）的結合充分衡量操作性和執
+                <div style="padding-top: 10px">行價值。營銷效果實現可檢測，充分分析透視數據揭秘商業價值。</div>
+            </div>
+        </div>
+    </div>
+    <div class="ys-xs hidden-lg">
+        <div class="ys-toBottom-xs">
+            <img src="img/toBottom.png" style="height: 40px;width: 30px">
+        </div>
+        <div class="text-center text-28x text-fold text-orange" style="padding-left: 15px;padding-right: 15px; padding-top: 117px;">橙意智造的優勢和服務重點</div>
+        <div class="text-center l-h-1x text-orange">—</div>
+        <div class="text-center l-h-1x text-orange" style="padding-bottom: 22px">專注於訂製全局性的品牌社會化營銷</div>
+        <div class="ys-title-xs">
+            <span>完成從品牌建設到提升銷售的社會化營銷閉環</span>
+        </div>
+        <div class="l-h-1x text-13x text-orange text-center p-t-15x">形成良性數據循環</div>
+        <div class="text-center p-t-20x">
+            <img src="img/ys-xs.png" class="w-full" style=" max-width: 470px">
+        </div>
+        <div class="p-l-5x p-r-5x p-t-40x p-b-60x">
+            <div class="ys-item-xs">
+                會傾聽
+            </div>
+            <div class="ys-item-text-xs">善於利用優質的社會化媒體監控工具對所監測的話題的Social Content（社會化內容）進行收集、分類和管理。</div>
+            <div class="ys-item-xs">
+                重內容
+            </div>
+            <div class="ys-item-text-xs">
+                指定內容營銷戰略：網頁、圖片、視頻，音頻和TV Show、社區網絡、Rich Media等文本內容通過社會化渠道進行推廣。
+            </div>
+            <div class="ys-item-xs">
+                善社交
+            </div>
+            <div class="ys-item-text-xs">
+                通過協調客戶需求和內容營銷戰略中的業務目標來形成互動循環。通過意見領袖、UGC、粉絲群體...指定品牌及事件的爆光戰略，給品牌及產品帶來搜索、流量和聯動成熟的社區分析導流，從而完成指定的目標。
+            </div>
+            <div class="ys-item-xs">
+                可測量
+            </div>
+            <div class="ys-item-text-xs">
+                Social Media Monitoring（社會化媒體監測）和Web Analytics（網絡分析）的結合充分衡量操作性和執行價值。營銷效果實現可檢測，充分分析透視數據揭秘商業價值。
+            </div>
+        </div>
+    </div>
+    <div class="cut-img hidden-xs"></div>
+    <div class="bc-black hidden-lg" style="border: 1px solid">
+        <img src="img/cut-img.png" class="w-full">
+    </div>
+    <div class="kh hidden-xs" id="kh">
+        <div class="kh-toBottom">
+            <img src="img/toBottom.png">
+        </div>
+        <div class="trigger effect-slideup lazy-load-box">
+            <div class="text-center text-55x text-fold l-h-1x text-orange" style="letter-spacing: 4px;padding-top: 60px;">橙意智造的專注打動了你們</div>
+            <div class="text-center text-35x l-h-1x text-orange">—</div>
+            <div class="text-center text-23x l-h-1x text-orange" style="padding-bottom: 40px">我們的合作客戶</div>
+            <div class="text-center p-b-70x" style="color: #ffffff">
+                <span class="text-16x hander kh-filter" ng-click="changeKhFilter(0)">ALL</span>
+                <span class="p-l-35x"></span>
+                <span ng-repeat="item in bussinessTypeList track by $index">
+                    <span class="text-16x hander kh-filter" ng-click="changeKhFilter($index+1,item._id)" ng-bind="item.name"></span>
+                    <span class="p-l-35x" ng-if="!$last"></span>
+                </span>
+
+
+            </div>
+            <div class="clearfix m-0-a busList" style="width:1020px">
+                <div class="kh-item m-r-15x" ng-repeat="item in bussinessList | orderBy:'sortNo'" ng-if="bussinessType=='ALL' || item.busType== bussinessType">
+                    <img src=".{{item.logo}}" class="w-full h-full">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="kh-xs hidden-lg">
+        <div class="ks-toBottom-xs">
+            <img src="img/toBottom.png" style="height: 40px;width: 30px">
+        </div>
+        <div class="p-l-15x p-r-15x">
+            <div class="text-center text-28x text-fold text-orange" style="padding-top: 85px;">橙意智造的專注打動了你們</div>
+            <div class="text-center  l-h-1x text-orange">—</div>
+            <div class="text-center  l-h-1x text-orange" style="padding-bottom: 8px">我們的合作客戶</div>
+        </div>
+
+        <div class="text-center p-t-15x" style="color: #ffffff;padding-bottom: 21px">
+            <span class="text-12x kh-filter-xs" style="white-space: nowrap;" ng-click="changeKhFilterXs(0)">ALL</span>
+            <span class="p-l-10x"></span>
+            <span ng-repeat="item in bussinessTypeList track by $index">
+                    <span class="text-12x kh-filter-xs" ng-click="changeKhFilterXs($index+1,item._id)" ng-bind="item.name"></span>
+                    <span class="p-l-10x" ng-if="!$last"></span>
+                </span>
+        </div>
+        <div class="clearfix m-0-a p-l-10x p-r-10x p-b-60x busList">
+            <div class="kh-item-xs m-r-5x" ng-repeat="item in bussinessList | orderBy:'sortNo'" ng-if="bussinessType=='ALL' || item.busType== bussinessType">
+                <img src=".{{item.logo}}" class="w-full h-full">
+            </div>
+        </div>
+
+    </div>
+    <div class="cut-img hidden-xs"></div>
+    <div class="bc-black hidden-lg" style="border: 1px solid">
+        <img src="img/cut-img.png" class="w-full">
+    </div>
+    <div class="btn-logo hidden-xs">
+        <div class="text-center logo">
+            <img src="img/bottom-logo.png">
+        </div>
+        <div class="footer-name" style="color: #a6a6a6">
+            橙意智造公關策劃
+        </div>
+        <div class="">
+            <div class="xbox text-white m-0-a" style="width:780px">
+                <div class="col">
+                    <div style="color: #797979">橙意智造--HongKong</div>
+                    <div style="color: #a6a6a6">香港九龍旺角33號凱途發展大廈7樓04單元</div>
+                </div>
+                <div class="col">
+                    <div style="color: #797979">橙意智造--FoShan</div>
+                    <div style="color: #a6a6a6">廣東省金融高新區（佛山南海）保利西街2棟01-02單元</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-logo-xs hidden-lg">
+        <div class="text-center p-b-15x">
+            <img src="img/bottom-logo.png" style="width: 65px;height: 70px">
+        </div>
+        <div class="footer-name-xs text-12x" style="color: #a6a6a6">
+            橙意智造公關策劃
+        </div>
+        <div class="text-12x p-b-15x">
+            <div style="color: #797979">橙意智造--HongKong</div>
+            <div style="color: #a6a6a6">香港九龍旺角33號凱途發展大廈7樓04單元</div>
+        </div>
+        <div class="text-12x p-t-9x">
+            <div style="color: #797979">橙意智造--FoShan</div>
+            <div style="color: #a6a6a6">廣東省金融高新區（佛山南海）保利西街2棟01-02單元</div>
+        </div>
+    </div>
+    <div class="end hidden-xs">
+        CopyRight©香港橙意公關顧問有限公司All Rights Reserved 粵ICP备16000871号
+    </div>
+    <div class="end-xs hidden-lg">
+        <img src="img/end-xs.png" class="w-full">
+    </div>
+
+    <!-- 作品遮罩 -->
+    <div class="bodyBG" ng-if="showModal" style="display: block!important;"></div>
+    <div class="workModal" ng-if="showModal" style="display: block!important;">
+        <div class="mdclose">
+            <div>
+                <img src="img/close.png"  ng-click="closeModel()" class="hander mdclose-img">
+            </div>
+        </div>
+        <div class="work-list" id="cyworkcontent">
+            <div class="workModel-title ymx">
+                <div class="caption-fist">
+                    {{workContent.title}}
+                </div>
+                <div class="clearfix p-t-9x text-12x" style="color: #8b8b8b">
+                    <div class="f-l">
+                        {{workContent.loadTime}}
+                    </div>
+                    <div class="f-r"></div>
+                </div>
+                <div class="p-t-20x">
+                    <div class="w-full" ng-bind-html="workContent.content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="work-btn">
+            <div class="work-btn-left" ng-click="changePage(itemIndex-1)" ng-class="{'bg-ban':itemIndex-1<0,'bg-open':itemIndex>0}">< </div>
+            <div class="work-btn-cener">
+                <img src="img/work-btn-list.png" class="w-full hander" ng-click="closeModel()">
+            </div>
+            <div class="work-btn-right" ng-click="changePage(itemIndex+1)" ng-class="{'bg-ban':itemIndex==workList.length-1}">> </div>
+        </div>
+    </div>
+    <!-- 作品遮罩 -->
+
+    <!-- 手机端菜单 -->
+    <div class="menu-xs">
+        <div class="xbox">
+            <a class="col b-r-w" href="work.html">
+                <div class=" text-center">
+                    <img src="img/work_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    WORKS
+                </div>
+            </a>
+            <div class="col b-r-w hander">
+                <div class=" text-center">
+                    <img src="img/phone_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    電話咨詢
+                </div>
+            </div>
+            <div class="col b-r-w hander">
+                <div class=" text-center">
+                    <img src="img/wechat_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    微信
+                </div>
+            </div>
+            <div class="col b-r-w hander">
+                <div class=" text-center">
+                    <img src="img/weibo_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    微博
+                </div>
+            </div>
+            <div class="col b-r-w hander">
+                <div class=" text-center">
+                    <img src="img/QQ _menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    QQ
+                </div>
+            </div>
+            <div class="col b-r-w hander">
+                <div class=" text-center">
+                    <img src="img/email_menu.png" class="w-20x">
+                </div>
+                <div class=" text-12x text-center">
+                    郵箱
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

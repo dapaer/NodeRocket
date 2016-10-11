@@ -6,6 +6,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 //var routes = require('./routes/index');
@@ -14,16 +15,12 @@ var http = require('http');
 var util =  require('util')
 
 var Result =  require('./sys/entity/result.js');
+var UmResult =  require('./sys/entity/umResult.js');
 var config =  require('./sys/config/Config.js');
 var StringUtil =  require('./sys/util/StringUtil.js');
 
-//配置服务对象 
+//配置服务对象
 config.configServiceObj();
-
-//mongodb setting
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;//内置使用的是bluebird,现在换成原生的,后期有空再弄
-mongoose.connect('mongodb://dapaer:dapaer@localhost:27017/node');
 
 var app = express();
 
@@ -31,16 +28,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
+// mileware config
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(bodyParser.json());
 app.use(cookieParser());
+//config the session;
+app.use(session({
+  secret: '12345',
+  name: 'name',
+  cookie: {maxAge: 6000000},
+  resave: false,
+  saveUninitialized: true,
+}));
 app.use(express.static(path.join(__dirname, 'public')));
-
-//app.use('/', routes);
-//app.use('/users', users);
 
 
 
@@ -53,8 +55,10 @@ app.all(/^\/server\/([A-Z,a-z,0-9])+!([A-Z,a-z,0-9])+$/,function(req,res){
   var methodName = StringUtil.getMethodName(url);
   var action = config.servicesObj[actionName];
   var params = req.body;
-  if(req.method=='GET'){
-    params = req.query;
+  if(req.query){
+    for(var key in req.query){
+      params[key] = req.query[key];
+    }
   }
   if(params.page&&params.pageSize){
     params.pageObj = {

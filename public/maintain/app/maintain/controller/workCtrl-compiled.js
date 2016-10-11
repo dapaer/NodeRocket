@@ -1,8 +1,16 @@
-app.controller('workCtrl', function ($rootScope, $scope, $http, $state, $stateParams, $location, $modal) {
+app.controller('workCtrl', function ($rootScope, $scope, $http, $state, $stateParams, $location, $modal, $timeout) {
 	$scope.search = {};
 	$scope.resultArr = [];
 	$scope.SYS_TRUE = 'TRUE';
 	$scope.SYS_FALSE = 'FALSE';
+	$scope.initUM = function () {
+		UE.delEditor('editor');
+		var ue = UE.getEditor('editor');
+	};
+
+	$timeout(function () {
+		$scope.initUM();
+	}, 500);
 
 	$scope.open = function () {
 		var modalInstance = $modal.open({
@@ -51,7 +59,7 @@ app.controller('workCtrl', function ($rootScope, $scope, $http, $state, $statePa
 	};
 });
 
-app.controller('createWorkCtrl', function ($scope, $modalInstance, $http, item) {
+app.controller('createWorkCtrl', function ($scope, $modalInstance, $http, item, $timeout) {
 	$scope.obj = {};
 	$scope.ok = function () {
 		$http.post('/server/workService!saveEntity', $scope.obj).success(function (data) {
@@ -70,6 +78,14 @@ app.controller('createWorkCtrl', function ($scope, $modalInstance, $http, item) 
 			}
 		});
 	};
+
+	$scope.initUM = function () {
+		var ue = UE.getEditor('editor');
+	};
+
+	$timeout(function () {
+		$scope.initUM();
+	}, 500);
 
 	$scope.queryType();
 });

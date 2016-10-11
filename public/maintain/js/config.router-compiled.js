@@ -79,7 +79,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams', function ($ro
         controller: 'workCtrl',
         resolve: {
             deps: ['uiLoad', function (uiLoad) {
-                return uiLoad.load(['app/maintain/controller/workCtrl.js']);
+                return uiLoad.load(['app/maintain/controller/workCtrl.js', "vendor/UM/ueditor.config.js", "vendor/UM/ueditor.all.min.js", "vendor/UM/lang/zh-cn/zh-cn.js"]);
             }]
         }
     }).state('app.form.imagecrop', {

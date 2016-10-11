@@ -1,0 +1,56 @@
+<div class="p-l-sm padder-v-sm">
+	<div class="font-bold text-md b-b">创建用户</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">微信昵称：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="user.NICKNAME">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">头像：</div>
+		<div class="col col-lg">
+			<img class="img-xs" ng-src="{{user.HEADIMGURL}}">
+		</div>
+		<div class="col p-r-sm">
+		<allen-file-upload f-model='user.HEADIMGURL' f-img="true"></allen-file-upload>
+		</div>
+		
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">手机：</div>
+		<div class="col p-r-sm">
+			<input type="tel" class="form-control" ng-model="user.PHONE">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">性别：</div>
+		<div class="col p-r-sm">
+			 <select ng-model="user.SEX" ng-options="a.value as a.key for a in sexObj">
+			    <option value="">请选择性别</option>
+			  </select>
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">省份：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="user.PROVINCE">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">城市：</div>
+		<div class="col p-r-sm">
+			<input type="text" class="form-control" ng-model="user.CITY">
+		</div>
+	</div>
+	<div class="hbox padder-v-md">
+		<div class="col col-md">积分：</div>
+		<div class="col p-r-sm">
+			<input type="tel" class="form-control" ng-model="user.SCORE">
+		</div>
+	</div>
+	<div class="hbox">
+		<div class="col text-right p-r-sm">
+			<a class="btn btn-info" ng-click="ok()">提交</a>
+		</div>
+	</div>
+</div>

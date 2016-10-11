@@ -1,0 +1,13 @@
+{
+  "db":{
+    "databaseEngine":"mongodb",
+    "userName":"dapaer",
+    "passWord":"dapaer",
+    "url":"localhost",
+    "port":"27017",
+    "database":"node"
+  },
+  "appInfo":{
+    "scanPackages":["/bussiness","/sys/service"]
+  }
+}

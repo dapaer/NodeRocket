@@ -3,7 +3,7 @@ var co = require('co');
 var _ = require('lodash');
 var busTypeService = require('./busTypeService');
 
-busService = {
+var busService = {
 	//这里是保存实体
 	saveEntity:function(req,res,param){
 		var result1 = bus.saveEntity({
@@ -18,7 +18,7 @@ busService = {
 	query:function(req,res,param){
 		bus.findByCondition(param).then(function(data){
 			res.send(global.configResult(data));
-		}); 
+		});
 	},
 	queryAndType : function(req,res,param) {
 		co(

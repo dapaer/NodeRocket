@@ -1,10 +1,11 @@
 var workTypes = require('../models/workTypes').workTypes;
-workTypeService = {
+var workTypeService = {
 	//这里是保存实体
 	saveEntity:function(req,res,param){
 		var result1 = workTypes.saveEntity({
 			name: param.name,
 			state:param.state,
+			logo:param.logo,
 		}).then(function(data){
 			res.send(global.configResult(data));
 		});
@@ -18,7 +19,7 @@ workTypeService = {
 		return workTypes.findByCondition({_id:{$in:ids}});
 	},
 	/**
-	 * 查询有效的 
+	 * 查询有效的
      */
 	queryUndisable:function(req,res){
 		workTypes.findByCondition({state:'TRUE'}).then(function(data){

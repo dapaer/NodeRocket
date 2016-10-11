@@ -1,6 +1,6 @@
 var co = require('co');
 var banners = require('../models/banners').banners;
-bannersService = {
+var bannersService = {
 	//这里是保存实体
 	saveEntity: function (req, res, param) {
 		var result1 = banners.saveEntity({

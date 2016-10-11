@@ -35,11 +35,11 @@ function geFileList(path)
  */
 function readFile(path,filesList)
 {
-    files = fs.readdirSync(path);//需要用到同步读取
+    var files = fs.readdirSync(path);//需要用到同步读取
     files.forEach(walk);
     function walk(file)
     {
-        states = fs.statSync(path+'/'+file);
+        var states = fs.statSync(path+'/'+file);
         if(states.isDirectory())
         {
             readFile(path+'/'+file,filesList);

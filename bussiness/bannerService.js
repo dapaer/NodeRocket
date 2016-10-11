@@ -1,6 +1,6 @@
 var co = require('co');
 var banners = require('../models/banners').banners;
-bannersService = {
+var bannersService = {
 	//这里是保存实体
 	saveEntity:function(req,res,param){
 		var result1 = banners.saveEntity({
@@ -22,7 +22,7 @@ bannersService = {
 	},
 	update:function(req,res,param){
 		banners.updateEntity({_id:param._id},{
-			img: param.img, 
+			img: param.img,
 			sortNo:param.sortNo
 		}).then(function(data){
 			res.send(global.configResult(data));

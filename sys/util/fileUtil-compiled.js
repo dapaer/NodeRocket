@@ -30,10 +30,10 @@ function geFileList(path) {
  * @param filesList 文件对象存储数组：[{size:xxx,name:xxx,path:xxx}]
  */
 function readFile(path, filesList) {
-    files = fs.readdirSync(path); //需要用到同步读取
+    var files = fs.readdirSync(path); //需要用到同步读取
     files.forEach(walk);
     function walk(file) {
-        states = fs.statSync(path + '/' + file);
+        var states = fs.statSync(path + '/' + file);
         if (states.isDirectory()) {
             readFile(path + '/' + file, filesList);
         } else {

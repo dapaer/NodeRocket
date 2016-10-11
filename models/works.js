@@ -4,6 +4,7 @@
 var schemaHelper = require("../utils/schemaHelper");
 var workScheMa =schemaHelper.initSchema({
     workType: String,
+    workVal: String,
     sortNo:String,
     loadTime:String,
     title:String,

@@ -1,19 +1,35 @@
 var FileUtil =  require('./../util/fileUtil.js');
 var StringUtil =  require('./../util/StringUtil.js');
+var appConfigJson = require("../appConfig.json");
+
+
+var db = appConfigJson.db;
+var appInfo = appConfigJson.appInfo;
+if(db.databaseEngine==="mongodb"){
+	//mongodb setting
+	var mongoose = require('mongoose');
+	mongoose.Promise = global.Promise;//内置使用的是bluebird,现在换成原生的,后期有空再弄
+	mongoose.connect(db.databaseEngine+'://'+db.userName+':'+db.passWord+'@'+db.url+':'+db.port+'/'+db.database);
+}
+
+
+
 var config = {
 }
 config.servicesObj = {};
 //扫描service的包路径
-config.scanPackageDir =global.root_dirName + "/"+"bussiness";
-
+config.scanPackageDirs = appInfo.scanPackages;
+//scan the service packages
 config.configServiceObj = function(){
-	var fileList = FileUtil.geFileList(config.scanPackageDir);
-	for(var i = 0;i<fileList.length;i++){
-		var curFile = fileList[i];
-		//处理后缀名
-		var fileName = curFile.name.substr(0,curFile.name.lastIndexOf('.'));
-		if(curFile.name.indexOf('Service.js')!=-1){
-			config.servicesObj[StringUtil.changeToHump(fileName)] = require(curFile.path);
+	for(let i = 0;i<config.scanPackageDirs.length;i++){
+		var fileList = FileUtil.geFileList(global.root_dirName+config.scanPackageDirs[i]);
+		for(let j = 0;j<fileList.length;j++){
+			var curFile = fileList[j];
+			//处理后缀名
+			var fileName = curFile.name.substr(0,curFile.name.lastIndexOf('.'));
+			if(curFile.name.indexOf('Service.js')!=-1){
+				config.servicesObj[StringUtil.changeToHump(fileName)] = require(curFile.path);
+			}
 		}
 	}
 };
