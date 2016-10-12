@@ -34,6 +34,9 @@ jspm_packages
 *-compiled.js
 *-compiled.js.map
 
+＃webstorm desc file
+.idea
+
 # Optional npm cache directory
 .npm
 
