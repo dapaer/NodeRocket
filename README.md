@@ -15,4 +15,4 @@
 ### 代码配置
     打开项目根目录的sys->appConfig.json文件，配置数据库信息和appInfo信息（appInfo信息暂时只有scanPackages，这个属性是指系统中要扫描作为主要业务提供的包）
 ￼
-###运行代码
+### 运行代码
