@@ -14,6 +14,7 @@
     2. mongodb创建用户名和密码可以查看[我的博客](http://www.jianshu.com/p/56675b38660e)
     
 ### 代码配置
-    打开项目根目录的sys->appConfig.json文件，配置数据库信息和appInfo信息（appInfo信息暂时只有scanPackages，这个属性是指系统中要扫描作为主要业务提供的包）
+    打开项目根目录的sys->appConfig.json文件，配置数据库信息和appInfo信息
+    （appInfo信息暂时只有scanPackages，这个属性是指系统中要扫描作为主要业务提供的包）
 ￼
 ### 运行代码
