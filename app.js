@@ -19,7 +19,7 @@ var UmResult =  require('./sys/entity/umResult.js');
 var config =  require('./sys/config/Config.js');
 var StringUtil =  require('./sys/util/StringUtil.js');
 
-//配置服务对象
+//配置服务对象ß
 config.configServiceObj();
 
 var app = express();
