@@ -4,4 +4,5 @@
 ### 准备操作
 1. 将项目克隆到本地环境（由于改项目还未封装完善，所以暂时没有放到npm仓库中）
 2. 安装babel编译器，可输入如下指令进行安装（默认系统已经配置好node环境）
-    npm install －g babel-cli （－g 代表全局安装，由于项目使用到es6语法糖，所以需要通过babel将es6d的代码）
+    
+    npm install －g babel-cli （－g 代表全局安装，由于项目使用到es6语法糖，所以需要通过babel将es6d的代码）
