@@ -10,9 +10,14 @@ var initSchema = function(obj){
         //console.log("you call save",entity,this.create)
         return executeFn(this,this.create,entity);
     }
-    schema.statics.findByCondition=function(qObj){
-        delete qObj.pageObj;
-        return executeFn(this,this.find,qObj);
+    /**
+     * 分页查询
+     * @param qObj 查询条件
+     * @param page 分页对象
+     */
+    schema.statics.findPageByCondition=function(qObj,page){
+
+        return executeFn(this,this.find,qObj,null,{skip:page.page,limit:page.pageSize});
     };
 
     schema.statics.queryById=function(id){
@@ -24,11 +29,15 @@ var initSchema = function(obj){
             sObj = {'$set':sObj};
         }
         return executeFn(this,this.update,qObj,sObj);
-    }
+    };
+
+    schema.statics.countByParam=function(qObj){
+        return executeFn(this,this.count,qObj);
+    };
 
     schema.statics.deleteEntity = function(condition){
         return executeFn(this,this.remove,condition);
-    }
+    };
   /*  shcema.statics.findOne=function(entity){
         return executeFn(this,this.findOne,entity);
     }*/
