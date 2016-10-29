@@ -14,6 +14,11 @@ var  busTypeService = {
 			res.send(global.configResult(data));
 		});
 	},
+	queryByPage:function(req,res,param,page){
+		busTypes.findPageByCondition(param,page).then(function(data){
+			res.send(global.configResult(data));
+		});
+	},
 	queryById:function(id){
 		return busTypes.queryById(id);
 	},

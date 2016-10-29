@@ -1,4 +1,4 @@
-function Result (obj,message,success){
+function Result (obj,message,success,pageInfo){
 	this.success = 'TRUE';
 	this.message = '';
 	if(message){
@@ -6,6 +6,9 @@ function Result (obj,message,success){
 	}
 	if(success){
 		this.success=success;
+	}
+	if(pageInfo){
+		this.pageInfo=pageInfo;
 	}
 	this.obj=obj;
 	this.configError = function(message){
@@ -15,6 +18,9 @@ function Result (obj,message,success){
 	return this; 
 };
 global.configResult = function(obj,message,success){
+	if(obj.$pageInfo&&obj.$data){//如果是分页的情况
+		return new Result(obj.$data,message,success,obj.$pageInfo);
+	}
     return new Result(obj,message,success);
 }
 module.exports = Result;

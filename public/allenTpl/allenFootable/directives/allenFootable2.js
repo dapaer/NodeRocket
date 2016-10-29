@@ -303,7 +303,7 @@ app.directive('allenFootable', function($http,$compile,$timeout, footableRefresh
 		        		.success(function(data){
 		        			if(data.success){
 		        				scope[iAttrs.ftResultArray] = data.obj;
-		        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo?data.pageInfo.COUNT:0;
+		        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo?data.pageInfo.count:0;
 		        				if(iAttrs.showLight){
 		        					$('.ft-tr').click(function(){
 		        						$(this).toggleClass('bg-warning lter');
@@ -323,7 +323,7 @@ app.directive('allenFootable', function($http,$compile,$timeout, footableRefresh
 		                		    	$http.post(url,scope[iAttrs.ftSearch]).success(function(data){
 		                        			if(data.success){
 		                        				scope[iAttrs.ftResultArray] = data.obj;
-		                        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo? data.pageInfo.COUNT:0;
+		                        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo? data.pageInfo.count:0;
 		                        				if(iAttrs.showLight){
 		                        					setLight();
 		                        				}
@@ -342,7 +342,7 @@ app.directive('allenFootable', function($http,$compile,$timeout, footableRefresh
 		                              $http.post(url,scope[iAttrs.ftSearch]).success(function(data){
 		                                  if(data.success){
 		                                    scope[iAttrs.ftResultArray] = data.obj;
-		                                    scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.COUNT;
+		                                    scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.count;
 		                                    if(iAttrs.showLight){
 		                                      //setLight();
 		                                    }

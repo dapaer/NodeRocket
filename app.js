@@ -18,6 +18,8 @@ var Result =  require('./sys/entity/result.js');
 var UmResult =  require('./sys/entity/umResult.js');
 var config =  require('./sys/config/Config.js');
 var StringUtil =  require('./sys/util/StringUtil.js');
+var dataUtil =  require('./sys/util/dataUtil.js');
+var domain = require('domain');
 
 //配置服务对象ß
 config.configServiceObj();
@@ -46,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
+process.on('uncaughtException',function(err){console.log('error, but oh well', err.message); })
 
 //统一配置拦截器
 app.all(/^\/server\/([A-Z,a-z,0-9])+!([A-Z,a-z,0-9])+$/,function(req,res){
@@ -54,25 +56,35 @@ app.all(/^\/server\/([A-Z,a-z,0-9])+!([A-Z,a-z,0-9])+$/,function(req,res){
   var actionName = StringUtil.getActionName(url);
   var methodName = StringUtil.getMethodName(url);
   var action = config.servicesObj[actionName];
-  var params = req.body;
-  if(req.query){
-    for(var key in req.query){
-      params[key] = req.query[key];
-    }
-  }
-  if(params.page&&params.pageSize){
-    params.pageObj = {
-      page:params.page,
-      pageSize:params.pageSize
-    }
-    delete params.page;
-    delete params.pageSize;
-    delete params.ft_pageCount;
-  }
-  if(util.isFunction(action[methodName])){
-    action[methodName](req,res,params);
-  }
-  else{
+  var params = dataUtil.getParam(req,true);
+  const  pageObj = dataUtil.getPageParam(req);
+  if(action&&util.isFunction(action[methodName])){
+
+    var errorDomain = domain.create();
+    errorDomain.add(req);
+    errorDomain.add(res);
+    errorDomain.on('error', function(err) {
+      try {
+        res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
+      } catch (err) {
+        res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
+      }
+    });
+    errorDomain.run(function() {
+      try {
+        action[methodName](req,res,params,pageObj);
+      } catch (err) {
+        res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
+      }
+    });
+
+    /*try {
+      action[methodName](req,res,params);
+    } catch (err) {
+      res.statusCode = 500;
+      res.send(new Result(err,"服务器异常,请联系管理员","FALSE"));
+    }*/
+  }else{
     var result = new Result();
     result.configError(actionName+"类或"+methodName+"方法未实现!!!");
     res.send(result);

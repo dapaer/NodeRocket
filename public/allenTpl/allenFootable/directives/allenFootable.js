@@ -123,7 +123,7 @@ app.directive('allenFootable', function($http,$compile,$timeout) {
         		$http.post(url,scope[iAttrs.ftSearch] ).success(function(data){
         			if(data.success){
         				scope[iAttrs.ftResultArray] = data.obj;
-        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.COUNT;
+        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.count;
         				/**
                 		 * 观察搜索条件变化
                 		 */
@@ -132,7 +132,7 @@ app.directive('allenFootable', function($http,$compile,$timeout) {
                 		    	$http.post(url,scope[iAttrs.ftSearch]).success(function(data){
                         			if(data.success){
                         				scope[iAttrs.ftResultArray] = data.obj;
-                        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.COUNT;
+                        				scope[iAttrs.ftSearch].ft_pageCount = data.pageInfo.count;
                         			}
                         		});
                 		    }

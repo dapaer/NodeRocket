@@ -4,6 +4,7 @@
 var _ = require('lodash');
 var mongoose = require("mongoose");	//	顶会议用户组件
 var Schema = mongoose.Schema;	//	创建模型
+var co = require('co');
 var initSchema = function(obj){
     var schema = new Schema(obj);
     schema.statics.saveEntity=function(entity){
@@ -16,10 +17,27 @@ var initSchema = function(obj){
      * @param page 分页对象
      */
     schema.statics.findPageByCondition=function(qObj,page){
-
-        return executeFn(this,this.find,qObj,null,{skip:page.page,limit:page.pageSize});
+       var curEntity = this;
+       return new Promise(function(resolve,rej) {
+            co(
+                function*() {
+                    var data = yield executeFn(curEntity,curEntity.find,qObj,null,{skip:((page.page*1)-1)*(page.pageSize*1),limit:page.pageSize*1});
+                    var count = yield executeFn(curEntity,curEntity.count,qObj);
+                    page.count = count;
+                    return {
+                        $data:data,
+                        $pageInfo:page
+                    };
+                }
+            ).then(function(data){
+                resolve(data);
+            })
+        });
     };
 
+    schema.statics.findByCondition=function(qObj){
+        return executeFn(this,this.find,qObj);
+    };
     schema.statics.queryById=function(id){
         return executeFn(this,this.findById,id);
     };
