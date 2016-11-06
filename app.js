@@ -67,6 +67,7 @@ app.all(/^\/server\/([A-Z,a-z,0-9])+!([A-Z,a-z,0-9])+$/,function(req,res){
       try {
         res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
       } catch (err) {
+        console.error(err);
         res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
       }
     });
@@ -74,6 +75,7 @@ app.all(/^\/server\/([A-Z,a-z,0-9])+!([A-Z,a-z,0-9])+$/,function(req,res){
       try {
         action[methodName](req,res,params,pageObj);
       } catch (err) {
+        console.error(err);
         res.send(new Result(err.stack,"服务器异常,请联系管理员","FALSE"));
       }
     });
