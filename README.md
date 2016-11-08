@@ -1,5 +1,7 @@
 # NodeRocket
     这是一个基于express实现的二次封装框架，目的在于帮助开发人员快速搭建可使用的web应用
+    
+（框架亮点：程序员只需专注业务操作即可，其他框架自动处理，省时省力）
 ## 操作说明
 ### 准备操作
 1. 将项目克隆到本地环境（由于改项目还未封装完善，所以暂时没有放到npm仓库中）
@@ -16,7 +18,8 @@
 ### 代码配置
     打开项目根目录的sys->appConfig.json文件，配置数据库信息和appInfo信息
     （appInfo信息暂时只有scanPackages，这个属性是指系统中要扫描作为主要业务提供的包）
-       ![](https://github.com/dapaer/dapaer-s-pic-resource/blob/gh-pages/img/appConfig_record.gif?raw=true)
+      
+ ![](https://github.com/dapaer/dapaer-s-pic-resource/blob/gh-pages/img/appConfig_record.gif?raw=true)
 ### 运行代码
     node app.js / supervisor app.js
 如果有装supervisor的话 建议使用supervisor启动
